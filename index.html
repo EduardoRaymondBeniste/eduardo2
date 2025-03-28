@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DuduDevWebAI</title>
+    <style>
+        main {
+            border: solid 5px red;
+        }
+        div {
+            border: solid 5px orange;
+            font-size: 10px;
+            margin: 5px
+        }
+        .caixa {
+            display: flex;
+        }
+        body {
+            color: #40514E;
+            margin: 0;
+            text-align: center;
+            font-family: sans-serif;
+            background-color: white;
+            font-size: 2em;
+        }
+        .main-container {
+            background-color: cyan;
+            padding: 20px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .middle-container {
+            margin: 100px auto;
+        }
+        
+        /* Novo menu dropdown */
+        * {
+            box-sizing: border-box;
+        }
+        
+        .navbar {
+            background-color: #333;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-item {
+            position: relative;
+            margin: 0 15px;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            background-color: #444;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 1;
+        }
+        
+        .dropdown-item {
+            padding: 12px 15px;
+            display: block;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #555;
+        }
+        
+        .nav-item:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                flex-direction: column;
+                background-color: #333;
+                width: 100%;
+                transition: 0.3s;
+                padding: 20px 0;
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 10px 0;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                box-shadow: none;
+                transition: max-height 0.3s ease;
+            }
+            
+            .dropdown-menu.show {
+                max-height: 500px;
+            }
+        }
+        
+        /* Manter os estilos existentes */
+        .tech-img {
+            width: 280px;
+            height: 280px;
+            display: block;
+            margin: 0 auto;
+        }
+        .celebro-top {
+            position: absolute;
+            top: 30px;
+            right: 280px;
+            width: 280px;
+            height: 280px;
+        }
+        .celebro-bottom {
+            position: absolute;
+            bottom: 280px;
+            left: 280px;
+            width: 280px;
+            height: 280px;
+        }
+        h1 {
+            color: #66BFBF;
+            line-height: 2;
+            font-size: 562.2rem; /*16px 1em 16px*/
+            margin: 0 auto;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+        h2, h3 {
+            color: #66BFBF;
+            
+            font-family: 'Monstserrat' sans-serif;
+            font-size: 2.5rem;
+            padding-top: 5%;
+        }
+        p {
+            line-height: 20px;
+            font-size: 18px;
+        }
+        hr {
+            border: doted #000 6px;
+            border-bottom: none;
+            width: 5%;
+            align: center;
+        }
+        a {
+            color: #11999E;
+            font-family: 'Monstserrat' sans-serif;
+            margin: 10px 20px;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #EAF6F6;
+        }
+        .alisson {
+            display: block;
+        }
+        .suassuna {
+            display: block;
+        }
+        .tech-text {
+            color: white;
+            background-color: blue;
+            padding: 10px;
+            display: inline-block;
+        }
+        .skill-row {
+            width: 50%;
+            margin: 100px auto 10px auto;
+            text-align: left;
+           
+            
+        }
+        .code-img {
+            width: 25%;
+            margin-right: 30px;
+            
+            float: left;
+        }
+        .descrition-img {
+            clear: left;
+        }
+       .fazer-img {
+            width: 25%;
+            margin-right: 30px;
+            float: right;
+        }
+       .contact-message{
+        width: 40%;
+        margin: 40px auto 60px;
+        text-align: center;
+       }
+       .bottom-container {
+        background-color: black;
+        text-decoration: none;
+        
+       }
+       .copyright {
+        color: #FFF;
+        font-size: 0.7rem;
+        padding: 20px 0;
+       }
+       .btn {
+        background: #11Cdd4;
+        background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+        background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+        background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+        background-image: -o-linear-gradient(top, #3498db, #2980b9);
+        background-image: linear-gradient(to bottom, #3498db, #2980b9);
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        border-radius: 100px;
+        font-family: Arial;
+        color: green;
+        font-size: 20px;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none;
+      }
+      
+      .btn:hover {
+        background: blue;
+        background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+        text-decoration: none;
+      }
+
+
+      body {
+        margin: 0;
+        text-align: center;
+        font-family: 'Marrieweather',serif;;
+        background-color: white;
+    }
+    .main-container {
+        background-color: cyan;
+        padding: 20px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    .header-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: blue;
+        padding: 180px 0;
+        z-index: 1000;
+    }
+    .tech-img {
+        width: 280px;
+        height: 280px;
+        display: block;
+        margin: 0 auto;
+    }
+    .celebro-top {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        width: 280px;
+        height: 280px;
+    }
+    .celebro-bottom {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        width: 280px;
+        height: 280px;
+    }
+    h1 {
+        font-family: 'Sacramento',cursive;
+        color: white;
+    }
+    .alisson {
+        display: block;
+    }
+    .suassuna {
+        display: block;
+    }
+    .tech-text {
+        color: white;
+        background-color: blue;
+        padding: 10px;
+        display: inline-block;
+    }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="img/Eduardo.jpeg" alt="DuduDevWebAI" />
+            <span>DuduDevWebAI</span>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <i>&#9776;</i>
+        </div>
+        <ul class="nav-links">
+            <li class="nav-item"><a href="#home" class="nav-link">Início</a></li>
+            <li class="nav-item"><a href="#sobre" class="nav-link">Sobre</a></li>
+            <li class="nav-item">
+                <a href="#ia" class="nav-link dropdown-toggle">Inteligência Artificial</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#chatbots" class="dropdown-item">Chatbots</a></li>
+                    <li><a href="#ml" class="dropdown-item">Machine Learning</a></li>
+                    <li><a href="#nlp" class="dropdown-item">Processamento de Linguagem</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#web" class="nav-link dropdown-toggle">Desenvolvimento Web</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#sites" class="dropdown-item">Sites Responsivos</a></li>
+                    <li><a href="#ecommerce" class="dropdown-item">E-commerce</a></li>
+                    <li><a href="#sistemas" class="dropdown-item">Sistemas Web</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a href="#contato" class="nav-link">Contato</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <main class="middle-container">
+
+            <div class="profile">
+                <figure>
+                   
+                    <figcaption>
+                        <h2>Olá</h2>
+                        <br>
+                       
+                        <p class="intro">Bém vindo Eduardo Raymond Beniste. Sou CTO da Dudu DevWebAI❤️ Espero que gostem..</p>
+                    </figcaption>
+                </figure>
+            </div> 
+            
+                <center><hr />
+    
+            <div class="skills">
+                <h2>Sistemas Web.</h2>
+                <figure class="skill-row">
+                    <img class="code-img" src="img/sistema.jpeg" alt="sistema" />
+                    <figcaption>
+                        <h3>Desenvolvedor De Sistemas Web</h3>
+                        <p>A Dudu DevWebAI transforma ideias em realidade digital! Criamos sistemas web personalizados com IA para otimizar seu negócio. Inovação e tecnologia sob medida. @eb.</p>
+                    </figcaption>
+                </figure>
+                
+                <figure class="skill-row">
+                    <img class="fazer-img" src="img/site.jpeg" alt="Site Responcivos" />
+            
+                    <h3>Desenvolvedor de Sites Responviovs</h3>
+                    <p>A Dudu DevWebAI é uma empresa especializada em criar sites responsivos e modernos, que se adaptam a qualquer dispositivo. Com uma equipe de profissionais altamente qualificados, a empresa oferece soluções personalizadas para atender às necessidades 1  de cada cliente..</p>
+    
+                </figure>
+            </div>
+    
+            <div class="contact-me">
+                <center><hr />
+                <h2>Entre em Contato</h2>
+                <h3>Estarei a sua disposição para lhe melhor atender.</h3>
+                <p class="contact-message">Mande uma mensagem relatando o que você deseja que em no máximo 48h irei responder seu e-mail!</p>
+                <a class="btn" href="mailto:eduardoraymondbeniste999@gmail.com">Entre em contato</a>
+            </div>
+        </main>
+        <footer class="bottom-container">
+             <a class="footer-link" href="https://www.youtube.com/tipscode">Youtube</a>
+            <a class="footer-link" href="https://www.tipscode.com.br">blog</a>
+            <a class="footer-link" href="https://www.instragram.com/tipscodeoficial">Instagram</a>
+            <p class="copyright">© 2025 Eduardo Raymond Beniste @ DuduDevWebAI.</p>
+        </footer>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+            
+            mobileMenu.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Para dispositivos móveis
+            if (window.innerWidth <= 768) {
+                dropdownToggles.forEach(toggle => {
+                    toggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const dropdownMenu = this.nextElementSibling;
+                        dropdownMenu.classList.toggle('show');
+                    });
+                });
+            }
+            
+            // Atualizar comportamento do dropdown ao redimensionar a janela
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                }
+            });
+        });
+        console.log('Mobile menu clicked');
+console.log('Dropdown toggle clicked');
+console.log('Window resized');
+    </script>
+</body>
+</html>
